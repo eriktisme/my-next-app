@@ -2,10 +2,18 @@ module.exports = {
   purge: ['./components/**/*.{js,jsx,ts,tsx}', './pages/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        none: 'none',
+      },
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ['first', 'last'],
+      boxShadow: ['focus'],
+    },
   },
   plugins: [],
 }
