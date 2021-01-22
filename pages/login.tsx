@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { cn } from '@packages/utils'
 import { Card, CardSection } from '@ui/card'
 import { GuestLayout } from '@ui/layouts'
+import { Button } from '@ui/button'
 
 const Login = () => {
   const { mutateUser } = useUser({
@@ -96,31 +97,15 @@ const Login = () => {
                   )}
                 />
               </label>
-              <button
+              <Button
                 type={'submit'}
-                disabled={busy}
-                className={cn(
-                  'rounded',
-                  'px-3',
-                  'py-2',
-                  'align-middle',
-                  'border',
-                  'border-transparent',
-                  'cursor-pointer',
-                  'text-center',
-                  'text-base',
-                  'transition-all',
-                  'appearance-none',
-                  'outline-none',
-                  'w-full',
-                  'text-white',
-                  'bg-blue-400',
-                  'hover:bg-blue-500',
-                  'focus:shadow-outline'
-                )}
+                busy={busy}
+                block={true}
+                rounded={true}
+                style={cn('bg-blue-400', 'hover:bg-blue-500', 'text-white')}
               >
                 Sign in
-              </button>
+              </Button>
             </form>
           </CardSection>
         </Card>
