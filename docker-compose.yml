@@ -1,0 +1,19 @@
+version: '3'
+services:
+  node:
+    build:
+      context: .
+      target: dev
+    expose:
+      - 3000
+    networks:
+      - internal
+      - proxy
+    volumes:
+      - ./:/app
+
+networks:
+  internal:
+  proxy:
+    name: scaling
+    external: true
