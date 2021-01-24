@@ -14,7 +14,7 @@ export const Default: VFC = () => (
   </Button>
 )
 
-export const Busy: VFC = () => (
+export const Disabled: VFC = () => (
   <Button
     busy={true}
     style={cn('bg-blue-400', 'hover:bg-blue-500', 'text-white')}
