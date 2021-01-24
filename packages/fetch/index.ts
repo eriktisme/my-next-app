@@ -1,1 +1,2 @@
-export { fetcher } from './fetcher'
+export { fetch } from './src/fetch'
+export { withToken } from './src/with-token'
