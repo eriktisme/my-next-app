@@ -1,11 +1,14 @@
-import { useUser } from '@packages/user/use-user'
-import { fetcher } from '@packages/fetch'
+import { useUser } from '@packages/user'
+import { fetch, withToken } from '@packages/fetch'
 import { FormEvent, useState } from 'react'
 import Head from 'next/head'
 import { cn } from '@packages/utils'
 import { Card, CardSection } from '@ui/card'
 import { GuestLayout } from '@ui/layouts'
 import { Button } from '@ui/button'
+import { GetServerSideProps } from 'next'
+import { Field, Label } from '@ui/form'
+import { Input } from '@ui/form/src/Input'
 
 const Login = () => {
   const { mutateUser } = useUser({
@@ -24,17 +27,18 @@ const Login = () => {
 
     try {
       await mutateUser(
-        fetcher('/api/login', {
+        fetch('/api/v1/login', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: {
+          data: {
             email,
             password,
           },
         })
       )
     } catch (e) {
-      console.log(e)
+      console.log(e.errors)
+    } finally {
+      setBusy(false)
     }
   }
 
@@ -47,56 +51,22 @@ const Login = () => {
         <Card>
           <CardSection>
             <form onSubmit={handleSubmit}>
-              <label className={cn('block', 'mb-6', 'w-full')}>
-                <span className={cn('block', 'mb-2', 'text-sm', 'font-medium')}>
-                  Email
-                </span>
-                <input
-                  type="email"
+              <Field>
+                <Label>Email</Label>
+                <Input
+                  type={'email'}
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  className={cn(
-                    'block',
-                    'rounded',
-                    'p-2',
-                    'w-full',
-                    'leading-normal',
-                    'align-middle',
-                    'text-base',
-                    'bg-clip-padding',
-                    'appearance-none',
-                    'outline-none',
-                    'border',
-                    'transition-all',
-                    'focus:shadow-outline'
-                  )}
                 />
-              </label>
-              <label className={cn('block', 'mb-6', 'w-full')}>
-                <span className={cn('block', 'mb-2', 'text-sm', 'font-medium')}>
-                  Password
-                </span>
-                <input
-                  type="password"
+              </Field>
+              <Field>
+                <Label>Password</Label>
+                <Input
+                  type={'password'}
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  className={cn(
-                    'block',
-                    'rounded',
-                    'p-2',
-                    'w-full',
-                    'leading-normal',
-                    'align-middle',
-                    'text-base',
-                    'bg-clip-padding',
-                    'appearance-none',
-                    'outline-none',
-                    'border',
-                    'transition-all',
-                    'focus:shadow-outline'
-                  )}
                 />
-              </label>
+              </Field>
               <Button
                 type={'submit'}
                 busy={busy}
@@ -112,6 +82,14 @@ const Login = () => {
       </div>
     </GuestLayout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  await withToken()
+
+  return {
+    props: {},
+  }
 }
 
 export default Login
