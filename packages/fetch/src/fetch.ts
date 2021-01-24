@@ -11,20 +11,19 @@ export const fetch = async (...args: Parameters<typeof axios>) => {
 
     return response.data
   } catch (e) {
-    if(!e.response) {
-      throw e
+    if (e.response) {
+      const error = new FetchError(e.response.data.message)
+      error.errors = e.response.data.errors
+      error.status = e.response.status
+
+      throw error
     }
 
-    const error = new FetchError(e.response.data.message)
-    error.errors = e.response.data.errors
-    error.status = e.response.status
-
-    throw error
+    console.log(e)
   }
 }
 
 class FetchError extends Error {
-  errors: any;
-  status: any;
-
+  errors: any
+  status: any
 }

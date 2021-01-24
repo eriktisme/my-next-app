@@ -1,10 +1,23 @@
 import useSWR from 'swr'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { fetch } from '@packages/fetch'
 
 export const useUser = ({ redirectTo = '', redirectIfFound = false } = {}) => {
-  const { data: user, mutate: mutateUser } = useSWR('/api/me')
-  const router = useRouter()
+  const { pathname, push, replace } = useRouter()
+
+  const { data: user, mutate: mutateUser } = useSWR('/api/v1/user', fetch, {
+    onError: async (error) => {
+      if (error.status === 401 && !['/login'].includes(pathname)) {
+        await replace('/login')
+      }
+    },
+    onErrorRetry: (_, key) => {
+      if (key === '/api/v1/user') {
+        return
+      }
+    },
+  })
 
   useEffect(() => {
     // no redirect needed, just return.
@@ -15,11 +28,11 @@ export const useUser = ({ redirectTo = '', redirectIfFound = false } = {}) => {
 
     if (
       // If redirect to is set, redirect if the uer was not found.
-      (redirectTo && !redirectIfFound && !user?.isLoggedIn) ||
+      (redirectTo && !redirectIfFound && !user) ||
       // If redirect if found is also set, redirect if the user was found.
-      (redirectIfFound && user?.isLoggedIn)
+      (redirectIfFound && user)
     ) {
-      router.push(redirectTo)
+      push(redirectTo)
     }
   }, [user, redirectIfFound, redirectTo])
 
