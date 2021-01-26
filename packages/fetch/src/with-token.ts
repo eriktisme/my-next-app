@@ -8,7 +8,7 @@ export const withToken = async (): Promise<Response | string> => {
     return new Promise((resolve) => resolve(token))
   }
 
-  return fetch('/sanctum/csrf-cookie', {
+  return fetch('/csrf-cookie', {
     method: 'GET',
   })
 }

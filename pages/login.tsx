@@ -27,7 +27,7 @@ const Login = () => {
 
     try {
       await mutateUser(
-        fetch('/api/v1/login', {
+        fetch('/login', {
           method: 'POST',
           data: {
             email,
