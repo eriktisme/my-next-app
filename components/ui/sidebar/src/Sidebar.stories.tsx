@@ -7,4 +7,4 @@ export default {
   component: Sidebar,
 } as Meta
 
-export const Default: VFC = () => <Sidebar open={false} />
+export const Default: VFC = () => <Sidebar />
