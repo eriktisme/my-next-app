@@ -4,7 +4,7 @@ import { cn } from '@packages/utils'
 class Document extends NextDocument {
   render(): JSX.Element {
     return (
-      <Html className={'h-full w-full'} lang={'en'}>
+      <Html className={'h-full w-full overflow-hidden'} lang={'en'}>
         <Head>
           <style jsx global={true}>
             {`
@@ -14,7 +14,15 @@ class Document extends NextDocument {
             `}
           </style>
         </Head>
-        <body className={cn('w-full', 'h-full', 'font-sans', 'antialiased')}>
+        <body
+          className={cn(
+            'w-full',
+            'h-full',
+            'font-sans',
+            'antialiased',
+            'overflow-hidden'
+          )}
+        >
           <Main />
           <NextScript />
         </body>
