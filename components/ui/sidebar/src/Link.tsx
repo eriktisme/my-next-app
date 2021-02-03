@@ -1,56 +1,45 @@
-import React, {
-  cloneElement,
-  createElement,
-  PropsWithChildren,
-  ReactElement,
-} from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 import { default as NextLink } from 'next/link'
 import { useRouter } from 'next/router'
 import { cn } from '@packages/utils'
 
 export const Link = ({
-  to,
+  href,
+  as,
   prefetch,
-  children,
+  icon,
 }: PropsWithChildren<{
-  to: string | { href: string; as: string }
+  href: string
+  as?: string | undefined
   prefetch?: boolean
+  icon: ReactNode
 }>) => {
   const router = useRouter()
 
-  let className = ''
+  let activeClasses = ''
 
-  if (typeof children !== 'string') {
-    className = (children as ReactElement).props.className
-  }
-
-  if (typeof to === 'string') {
-    if (router.pathname === to) {
-      className = cn(className, 'bg-white', 'bg-opacity-10', 'text-white')
-    }
-
-    if (typeof children === 'string') {
-      return (
-        <NextLink href={to} prefetch={prefetch || false}>
-          {createElement(children, { className })}
-        </NextLink>
-      )
-    }
-
-    return (
-      <NextLink href={to} prefetch={prefetch || false}>
-        {cloneElement(children as ReactElement, { className })}
-      </NextLink>
-    )
-  }
-
-  if (router.pathname === to.href) {
-    className = cn(className, 'bg-white', 'bg-opacity-10', 'text-white')
+  if (router.pathname === href) {
+    activeClasses = cn('bg-white', 'bg-opacity-10', 'text-white')
   }
 
   return (
-    <NextLink href={to.href} as={to.as} prefetch={prefetch || false}>
-      {cloneElement(children as ReactElement, { className })}
+    <NextLink href={href} as={as} prefetch={prefetch || false}>
+      <a
+        className={cn(
+          'block',
+          'relative',
+          'rounded',
+          'cursor-pointer',
+          'p-2',
+          'mb-2',
+          'last:mb-0',
+          activeClasses
+        )}
+      >
+        <div className={cn('relative', 'inline-block', 'text-current')}>
+          {icon}
+        </div>
+      </a>
     </NextLink>
   )
 }

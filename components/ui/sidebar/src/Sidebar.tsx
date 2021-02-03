@@ -28,6 +28,7 @@ export const Sidebar: FC = () => {
           'flex',
           'flex-col',
           'flex-none',
+          'items-center',
           'pt-8',
           'pb-4',
           'px-4',
@@ -39,60 +40,17 @@ export const Sidebar: FC = () => {
         }}
       >
         <div className={cn('flex', 'items-center', 'flex-auto', 'flex-col')}>
-          <Link to={'/dashboard'}>
-            <div
-              className={cn(
-                'block',
-                'relative',
-                'text-gray-500',
-                'rounded',
-                'cursor-pointer',
-                'mb-1',
-                'p-2',
-                'last:mb-0'
-              )}
-            >
-              <div
-                className={cn(
-                  'flex',
-                  'flex-none',
-                  'min-w-full',
-                  'justify-center',
-                  'items-center'
-                )}
-              >
-                <FontAwesomeIcon icon={faLightbulb} />
-              </div>
-            </div>
-          </Link>
+          <Link
+            href={'/dashboard'}
+            as={'dashboard'}
+            icon={<FontAwesomeIcon icon={faLightbulb} />}
+          />
         </div>
         <div className={cn('flex', 'flex-none', 'items-center')}>
-          <Link to={'/account/profile'}>
-            <div
-              className={cn(
-                'block',
-                'relative',
-                'text-gray-500',
-                'rounded',
-                'cursor-pointer',
-                'mb-1',
-                'p-2',
-                'last:mb-0'
-              )}
-            >
-              <div
-                className={cn(
-                  'flex',
-                  'flex-none',
-                  'min-w-full',
-                  'justify-center',
-                  'items-center'
-                )}
-              >
-                <FontAwesomeIcon icon={faUserCircle} />
-              </div>
-            </div>
-          </Link>
+          <Link
+            href={'/account/profile'}
+            icon={<FontAwesomeIcon icon={faUserCircle} />}
+          />
         </div>
       </div>
     </aside>
