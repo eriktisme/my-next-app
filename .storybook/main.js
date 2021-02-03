@@ -28,6 +28,7 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
+          '@packages/sidebar': toPath('./packages/sidebar'),
           '@packages/utils': toPath('./packages/utils'),
         },
       },
