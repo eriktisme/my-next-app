@@ -38,62 +38,59 @@ export const Sidebar: FC = () => {
           width: '70px',
         }}
       >
-        <div className={cn('flex-auto')}>
-          <div className={cn('flex', 'items-center', 'flex-auto', 'flex-col')}>
-            <Link to={'/dashboard'}>
+        <div className={cn('flex', 'items-center', 'flex-auto', 'flex-col')}>
+          <Link to={'/dashboard'}>
+            <div
+              className={cn(
+                'block',
+                'relative',
+                'text-gray-500',
+                'rounded',
+                'cursor-pointer',
+                'mb-1',
+                'p-2',
+                'last:mb-0'
+              )}
+            >
               <div
                 className={cn(
-                  'block',
-                  'relative',
-                  'text-gray-500',
-                  'rounded',
-                  'cursor-pointer',
-                  'mb-1',
-                  'p-2',
-                  'last:mb-0'
+                  'flex',
+                  'flex-none',
+                  'min-w-full',
+                  'justify-center',
+                  'items-center'
                 )}
               >
-                <div
-                  className={cn(
-                    'flex',
-                    'flex-none',
-                    'min-w-full',
-                    'justify-center',
-                    'items-center'
-                  )}
-                >
-                  <FontAwesomeIcon icon={faLightbulb} />
-                </div>
+                <FontAwesomeIcon icon={faLightbulb} />
               </div>
-            </Link>
-            <Link to={'/user'}>
+            </div>
+          </Link>
+          <Link to={'/user'}>
+            <div
+              className={cn(
+                'block',
+                'relative',
+                'text-gray-500',
+                'rounded',
+                'cursor-pointer',
+                'mb-1',
+                'p-2',
+                'last:mb-0'
+              )}
+            >
               <div
                 className={cn(
-                  'block',
-                  'relative',
-                  'text-gray-500',
-                  'rounded',
-                  'cursor-pointer',
-                  'mb-1',
-                  'p-2',
-                  'last:mb-0'
+                  'flex',
+                  'flex-none',
+                  'min-w-full',
+                  'justify-center',
+                  'items-center'
                 )}
               >
-                <div
-                  className={cn(
-                    'flex',
-                    'flex-none',
-                    'min-w-full',
-                    'justify-center',
-                    'items-center'
-                  )}
-                >
-                  <FontAwesomeIcon icon={faLightbulb} />
-                </div>
+                <FontAwesomeIcon icon={faLightbulb} />
               </div>
-            </Link>
-          </div>
-          <div className={cn('flex', 'flex-none', 'items-center')} />
+            </div>
+          </Link>
         </div>
       </div>
     </aside>
