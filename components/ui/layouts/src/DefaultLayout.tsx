@@ -2,12 +2,9 @@ import { FC } from 'react'
 import { cn } from '@packages/utils'
 import { Sidebar } from '@ui/sidebar'
 import { useSidebar } from '@packages/sidebar'
-import { Header } from '@ui/header'
 
 export const DefaultLayout: FC = ({ children }) => {
   const { open: sidebarIsOpen, toggle } = useSidebar()
-
-  const toggleSidebar = () => toggle(!sidebarIsOpen)
 
   return (
     <div
@@ -15,16 +12,17 @@ export const DefaultLayout: FC = ({ children }) => {
     >
       <div className={cn('flex', 'h-full', 'relative')}>
         <Sidebar />
-        <main
+        <div
           className={cn(
+            'relative',
             'flex',
-            'h-full',
             'flex-auto',
             'flex-col',
-            'w-full',
+            'h-full',
             'max-w-full',
             'transform',
-            'transition-all'
+            'transition-all',
+            'overflow-hidden'
           )}
           style={
             sidebarIsOpen
@@ -34,11 +32,10 @@ export const DefaultLayout: FC = ({ children }) => {
               : {}
           }
         >
-          <Header />
           {children}
-        </main>
+        </div>
         <div
-          onClick={toggleSidebar}
+          onClick={() => toggle(!sidebarIsOpen)}
           className={cn(
             'absolute',
             'top-0',

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { cn } from '@packages/utils'
 import { Link } from './Link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLightbulb } from '@fortawesome/free-regular-svg-icons'
+import { faLightbulb, faUserCircle } from '@fortawesome/free-regular-svg-icons'
 import { useSidebar } from '@packages/sidebar'
 
 export const Sidebar: FC = () => {
@@ -65,7 +65,9 @@ export const Sidebar: FC = () => {
               </div>
             </div>
           </Link>
-          <Link to={'/user'}>
+        </div>
+        <div className={cn('flex', 'flex-none', 'items-center')}>
+          <Link to={'/account/profile'}>
             <div
               className={cn(
                 'block',
@@ -87,7 +89,7 @@ export const Sidebar: FC = () => {
                   'items-center'
                 )}
               >
-                <FontAwesomeIcon icon={faLightbulb} />
+                <FontAwesomeIcon icon={faUserCircle} />
               </div>
             </div>
           </Link>

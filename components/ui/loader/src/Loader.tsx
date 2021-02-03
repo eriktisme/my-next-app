@@ -3,7 +3,7 @@ import { cn } from '@packages/utils'
 
 export const Loader: FC<{
   loading: boolean
-  fullscreen?: boolean
+  fullscreen?: boolean | undefined
 }> = ({ loading, fullscreen = true, children }) =>
   loading ? (
     <div className={cn('relative', fullscreen ? 'h-full' : '')}>
