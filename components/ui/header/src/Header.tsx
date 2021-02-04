@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { useSidebar } from '@packages/sidebar'
+import { useSidebar } from '@apps/sidebar'
 import { cn } from '@packages/utils'
 
 export const Header: FC<{

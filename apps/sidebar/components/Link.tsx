@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 import { default as NextLink } from 'next/link'
 import { useRouter } from 'next/router'
 import { cn } from '@packages/utils'
@@ -7,12 +7,11 @@ export const Link = ({
   href,
   as,
   prefetch,
-  icon,
+  children,
 }: PropsWithChildren<{
   href: string
   as?: string | undefined
   prefetch?: boolean
-  icon: ReactNode
 }>) => {
   const router = useRouter()
 
@@ -37,7 +36,7 @@ export const Link = ({
         )}
       >
         <div className={cn('relative', 'inline-block', 'text-current')}>
-          {icon}
+          {children}
         </div>
       </a>
     </NextLink>

@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { cn } from '@packages/utils'
-import { Sidebar } from '@ui/sidebar'
-import { useSidebar } from '@packages/sidebar'
+import { Sidebar, useSidebar } from '@apps/sidebar'
 
 export const DefaultLayout: FC = ({ children }) => {
   const { open: sidebarIsOpen, toggle } = useSidebar()

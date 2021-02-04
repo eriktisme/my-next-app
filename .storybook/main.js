@@ -4,6 +4,8 @@ const toPath = (path) => join(process.cwd(), path)
 
 module.exports = {
   stories: [
+    '../apps/**/*.stories.mdx',
+    '../apps/**/*.stories.@(js|jsx|ts|tsx)',
     '../components/**/*.stories.mdx',
     '../components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
@@ -28,7 +30,7 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          '@packages/sidebar': toPath('./packages/sidebar'),
+          '@apps/sidebar': toPath('./apps/sidebar'),
           '@packages/utils': toPath('./packages/utils'),
         },
       },

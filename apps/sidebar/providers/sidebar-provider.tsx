@@ -11,5 +11,6 @@ export const SidebarProvider: FC = ({ children }) => {
       setOpen(state)
     },
   }
+
   return <Sidebar.Provider value={sidebar}>{children}</Sidebar.Provider>
 }
