@@ -16,7 +16,7 @@ export const Page: FC<{
         typeof header === 'undefined' ? 'pt-0' : ''
       )}
     >
-      <div className={cn('my-0', 'mx-auto', 'w-full', maxWidth)}>
+      <div className={cn('my-0', 'mx-auto', 'w-full', 'px-4', maxWidth)}>
         {children}
       </div>
     </div>

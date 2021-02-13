@@ -1,30 +1,23 @@
-import { DefaultLayout, GuestLayout } from '@ui/layouts'
-import { Page } from '@ui/page'
-import { Loader } from '@ui/loader'
+import { DefaultLayout } from '@ui/layouts'
 import { NextPage } from 'next'
-import { useState } from 'react'
-import { NotificationsLogging } from '@apps/notifications'
 import Head from 'next/head'
 
-interface DashboardPageProps {}
+import {
+  Notifications as NotificationApp,
+  NotificationsLogging,
+} from '@apps/notifications'
 
-const Dashboard: NextPage<DashboardPageProps> = () => {
-  const [loading, setLoading] = useState(true)
+interface NotificationsPageProps {}
 
-  setTimeout(() => setLoading(false), 1000)
+const Notifications: NextPage<NotificationsPageProps> = () => (
+  <DefaultLayout>
+    <Head>
+      <title>Notifications</title>
+    </Head>
+    <NotificationsLogging>
+      <NotificationApp />
+    </NotificationsLogging>
+  </DefaultLayout>
+)
 
-  return (
-    <DefaultLayout>
-      <Head>
-        <title>Notifications</title>
-      </Head>
-      <Loader loading={loading}>
-        <NotificationsLogging>
-          <Page>Notifications</Page>
-        </NotificationsLogging>
-      </Loader>
-    </DefaultLayout>
-  )
-}
-
-export default Dashboard
+export default Notifications

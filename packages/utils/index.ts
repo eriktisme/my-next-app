@@ -1,1 +1,1 @@
-export { cn, noop } from './functions'
+export { cn, noop, timeSince } from './functions'

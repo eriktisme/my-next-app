@@ -2,6 +2,7 @@ import { SWRConfig } from 'swr'
 import { fetch } from '@packages/fetch'
 import '../styles/globals.css'
 import { LoggerProvider } from '@packages/logger'
+import { SidebarProvider } from '@apps/sidebar'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <LoggerProvider>
-        <Component {...pageProps} />
+        <SidebarProvider>
+          <Component {...pageProps} />
+        </SidebarProvider>
       </LoggerProvider>
     </SWRConfig>
   )

@@ -19,5 +19,8 @@ module.exports = {
       boxShadow: ['focus'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
 }
