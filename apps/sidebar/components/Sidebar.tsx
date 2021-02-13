@@ -3,6 +3,7 @@ import { cn } from '@packages/utils'
 import { Link } from './Link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faUserCircle } from '@fortawesome/free-regular-svg-icons'
+import { faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { useSidebar } from '../hooks/use-sidebar'
 
 export const Sidebar: FC = () => {
@@ -40,7 +41,10 @@ export const Sidebar: FC = () => {
         }}
       >
         <div className={cn('flex', 'items-center', 'flex-auto', 'flex-col')}>
-          <Link href={'/dashboard'} as={'dashboard'}>
+          <Link href={'/dashboard'}>
+            <FontAwesomeIcon icon={faThLarge} />
+          </Link>
+          <Link href={'/notifications'}>
             <FontAwesomeIcon icon={faLightbulb} />
           </Link>
         </div>

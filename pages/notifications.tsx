@@ -3,6 +3,7 @@ import { Page } from '@ui/page'
 import { Loader } from '@ui/loader'
 import { NextPage } from 'next'
 import { useState } from 'react'
+import { NotificationsLogging } from '@apps/notifications'
 import Head from 'next/head'
 
 interface DashboardPageProps {}
@@ -15,10 +16,12 @@ const Dashboard: NextPage<DashboardPageProps> = () => {
   return (
     <DefaultLayout>
       <Head>
-        <title>Dashboard</title>
+        <title>Notifications</title>
       </Head>
       <Loader loading={loading}>
-        <Page>Dashboard</Page>
+        <NotificationsLogging>
+          <Page>Notifications</Page>
+        </NotificationsLogging>
       </Loader>
     </DefaultLayout>
   )
