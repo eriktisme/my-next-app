@@ -2,6 +2,8 @@ import { FC } from 'react'
 import { NotificationItemInterface } from '../types'
 import { Card, CardSection } from '@ui/card'
 import { cn, timeSince } from '@packages/utils'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
 export const NotificationItem: FC<{
   notification: NotificationItemInterface
@@ -17,19 +19,32 @@ export const NotificationItem: FC<{
                 'cursor-pointer',
                 'flex-auto',
                 'prose',
-                'prose-sm',
                 notification.isRead ? 'text-gray-400' : ''
               )}
             />
-            <div className={cn('pl-2')}>x</div>
+            <div className={cn('pl-2')}>
+              <button
+                type={'button'}
+                className={cn(
+                  'opacity-0',
+                  'hover:opacity-100',
+                  'border-0',
+                  'rounded',
+                  'inline-flex',
+                  'justify-center',
+                  'items-center',
+                  'transition-all',
+                  'relative',
+                  'w-6',
+                  'h-6',
+                  'cursor-pointer'
+                )}
+              >
+                <FontAwesomeIcon icon={faEllipsisV} />
+              </button>
+            </div>
           </div>
-          <div
-            className={cn(
-              'text-sm',
-              'mt-2',
-              notification.isRead ? 'opacity-50' : ''
-            )}
-          >
+          <div className={cn('mt-2', notification.isRead ? 'opacity-50' : '')}>
             {timeSince(notification.createdAt)}
           </div>
         </div>

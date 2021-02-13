@@ -14,14 +14,14 @@ export const Notifications: FC = () => {
     {
       id: 1,
       message:
-        'At <strong>...</strong> we executed an arbitrage opportunity and made <strong>...</strong> BTC.',
+        'At <b>...</b> we executed an arbitrage opportunity and made <b>...</b> BTC.',
       createdAt: new Date('2021-02-13 16:00:00'),
       isRead: false,
     },
     {
       id: 2,
       message:
-        'At <strong>...</strong> we executed an arbitrage opportunity and made <strong>...</strong> BTC.',
+        'At <b>...</b> we executed an arbitrage opportunity and made <b>...</b> BTC.',
       createdAt: new Date('2020-12-12 00:00:00'),
       isRead: true,
     },
@@ -40,7 +40,10 @@ export const Notifications: FC = () => {
       >
         <div>
           {notifications.map((notification) => (
-            <NotificationItem notification={notification} />
+            <NotificationItem
+              key={notification.id}
+              notification={notification}
+            />
           ))}
         </div>
       </Page>

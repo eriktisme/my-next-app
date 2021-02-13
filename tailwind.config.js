@@ -17,6 +17,7 @@ module.exports = {
     extend: {
       borderWidth: ['first', 'last'],
       boxShadow: ['focus'],
+      opacity: ['hover'],
     },
   },
   plugins: [
