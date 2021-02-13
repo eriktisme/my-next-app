@@ -6,13 +6,13 @@ import { cn } from '@packages/utils'
 import { Card, CardSection } from '@ui/card'
 import { GuestLayout } from '@ui/layouts'
 import { Button } from '@ui/button'
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from 'next'
 import { Field, Label } from '@ui/form'
 import { Input } from '@ui/form/src/Input'
 
 interface LoginPageProps {}
 
-const Login:NextPage<LoginPageProps> = () => {
+const Login: NextPage<LoginPageProps> = () => {
   const { mutateUser } = useUser({
     redirectTo: '/',
     redirectIfFound: true,

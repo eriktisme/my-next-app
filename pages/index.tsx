@@ -1,6 +1,6 @@
 import { useUser } from '@packages/user'
-import { GetServerSideProps, NextPage } from "next";
-import { useRouter } from "next/router";
+import { GetServerSideProps, NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 interface IndexPageProps {}
 
@@ -15,7 +15,7 @@ const Index: NextPage<IndexPageProps> = () => {
 
   const { push } = useRouter()
 
-  push("/dashboard")
+  push('/dashboard')
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
