@@ -6,7 +6,7 @@ import { fetch } from '@packages/fetch'
 export const useUser = ({ redirectTo = '', redirectIfFound = false } = {}) => {
   const { pathname, push, replace } = useRouter()
 
-  const { data: user, mutate: mutateUser } = useSWR('/api/v1/user', fetch, {
+  const { data: user, mutate: mutateUser } = useSWR('/api/user', fetch, {
     onError: async (error) => {
       if (error.status === 401 && !['/login'].includes(pathname)) {
         await replace('/login')

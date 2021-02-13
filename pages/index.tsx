@@ -1,8 +1,10 @@
 import { useUser } from '@packages/user'
-import { GetServerSideProps } from 'next'
-import { withToken } from '@packages/fetch'
+import { GetServerSideProps, NextPage } from "next";
+import { useRouter } from "next/router";
 
-const Index = () => {
+interface IndexPageProps {}
+
+const Index: NextPage<IndexPageProps> = () => {
   const { user } = useUser({
     redirectTo: 'login',
   })
@@ -11,12 +13,12 @@ const Index = () => {
     return <div>Loading</div>
   }
 
-  return <div>Index</div>
+  const { push } = useRouter()
+
+  push("/dashboard")
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  await withToken()
-
   return {
     props: {},
   }

@@ -2,8 +2,11 @@ import { DefaultLayout } from '@ui/layouts'
 import { Page } from '@ui/page'
 import { Loader } from '@ui/loader'
 import Head from 'next/head'
+import { NextPage } from 'next'
 
-const Profile = () => (
+interface ProfilePageProps {}
+
+const Profile: NextPage<ProfilePageProps> = () => (
   <DefaultLayout>
     <Head>
       <title>Account Profile</title>

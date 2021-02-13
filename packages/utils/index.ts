@@ -1,1 +1,1 @@
-export { cn } from './functions'
+export { cn, noop } from './functions'

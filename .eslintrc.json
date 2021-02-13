@@ -11,7 +11,8 @@
     "react/prop-types": "off"
   },
   "globals": {
-    "React": "writable"
+    "React": "writable",
+    "JSX": "writable"
   },
   "env": {
     "browser": true,

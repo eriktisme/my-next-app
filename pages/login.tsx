@@ -1,16 +1,18 @@
 import { useUser } from '@packages/user'
-import { fetch, withToken } from '@packages/fetch'
+import { fetch } from '@packages/fetch'
 import { FormEvent, useState } from 'react'
 import Head from 'next/head'
 import { cn } from '@packages/utils'
 import { Card, CardSection } from '@ui/card'
 import { GuestLayout } from '@ui/layouts'
 import { Button } from '@ui/button'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPage } from "next";
 import { Field, Label } from '@ui/form'
 import { Input } from '@ui/form/src/Input'
 
-const Login = () => {
+interface LoginPageProps {}
+
+const Login:NextPage<LoginPageProps> = () => {
   const { mutateUser } = useUser({
     redirectTo: '/',
     redirectIfFound: true,
@@ -85,8 +87,6 @@ const Login = () => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  await withToken()
-
   return {
     props: {},
   }
