@@ -4,7 +4,9 @@ import { useIsDropdownVisible } from './dropdown-visible'
 
 export const Dropdown: FC<{
   button: ReactElement
-}> = ({ button, children }) => {
+  position?: string | undefined
+}> = ({ button, position = cn(
+  'origin-top-right', 'right-0'), children }) => {
   const {
     ref,
     isComponentVisible,
@@ -24,9 +26,8 @@ export const Dropdown: FC<{
       {button}
       <div
         className={cn(
-          'origin-top-right',
+          position,
           'absolute',
-          'right-0',
           'mt-2',
           'w-56',
           'rounded-md',
